@@ -4,9 +4,9 @@ This file lists the experiments with copy-paste-ready code and concise, practica
 
 - [Exp 1 — Aim: Identify and apply the appropriate HTML tags to develop a webpage](#exp-1)
 - [Exp 2 — Aim: To identify and apply the appropriate CSS tags in order to format the data on a webpage](#exp-2)
-- [Exp 4 — Aim: To construct a frontend application using React (Simple To-Do List App) using Vite](#exp-4)
-- [Exp 5 — Aim: To construct a backend using node.js/express](#exp-5)
-- [Exp 6 — Aim: To use javascript to develop interactive webpages (Simple Unit Converter)](#exp-6)
+- [Exp 4 — Aim: To use javascript to develop interactive webpages (Simple Unit Converter)](#exp-4)
+- [Exp 5 — Aim: To construct a frontend application using React (Simple To-Do List App) using Vite](#exp-5)
+- [Exp 6 — Aim: To construct a backend using node.js/express](#exp-6)
 - [Exp 7 — Aim: To design and simulate the environment for dynamic routing using Cisco Packet Tracer](#exp-7)
 - [Exp 8 — Aim: To design and simulate VLAN /WLAN on switch/router using Cisco Packet Tracer](#exp-8)
 
@@ -219,7 +219,87 @@ Save as `profile-styled.html` and open in a browser.
 
 <a id="exp-4"></a>
 
-## Exp 4 — Aim: To construct a frontend application using React (Simple To-Do List App) using Vite
+## Exp 4 — Aim: To use javascript to develop interactive webpages (Simple Unit Converter)
+
+Save as `unit-converter.html` and open in your browser.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Simple Unit Converter</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+      }
+      label,
+      select,
+      input {
+        margin: 10px 0;
+        display: block;
+      }
+      #result {
+        font-size: 20px;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Simple Length Unit Converter</h2>
+    <label for="inputValue">Value:</label>
+    <input id="inputValue" type="number" placeholder="Enter value" />
+    <label for="fromUnit">From:</label>
+    <select id="fromUnit">
+      <option value="meters">Meters</option>
+      <option value="kilometers">Kilometers</option>
+      <option value="miles">Miles</option>
+      <option value="feet">Feet</option>
+    </select>
+    <label for="toUnit">To:</label>
+    <select id="toUnit">
+      <option value="meters">Meters</option>
+      <option value="kilometers">Kilometers</option>
+      <option value="miles">Miles</option>
+      <option value="feet">Feet</option>
+    </select>
+    <button onclick="convert()">Convert</button>
+    <div id="result">Result: -</div>
+
+    <script>
+      const rates = {
+        meters: 1,
+        kilometers: 1000,
+        miles: 1609.34,
+        feet: 0.3048,
+      };
+      function convert() {
+        const input = parseFloat(document.getElementById("inputValue").value);
+        if (isNaN(input)) {
+          document.getElementById("result").innerText =
+            "Result: Please enter a valid number";
+          return;
+        }
+        const fromUnit = document.getElementById("fromUnit").value;
+        const toUnit = document.getElementById("toUnit").value;
+        const valueInMeters = input * rates[fromUnit];
+        const convertedValue = valueInMeters / rates[toUnit];
+        document.getElementById(
+          "result"
+        ).innerText = `Result: ${convertedValue.toFixed(4)} ${toUnit}`;
+      }
+    </script>
+  </body>
+</html>
+```
+
+---
+
+<a id="exp-5"></a>
+
+## Exp 5 — Aim: To construct a frontend application using React (Simple To-Do List App) using Vite
 
 Use Vite (fast and simple). From your chosen project folder open a terminal (PowerShell) and run:
 
@@ -342,9 +422,9 @@ Notes:
 
 ---
 
-<a id="exp-5"></a>
+<a id="exp-6"></a>
 
-## Exp 5 — Aim: To construct a backend using node.js/express
+## Exp 6 — Aim: To construct a backend using node.js/express
 
 Simple steps (assumes you already opened the project folder in VS Code):
 
@@ -388,86 +468,6 @@ node server.js
 ```
 
 Open `http://localhost:4000/` in a browser to verify.
-
----
-
-<a id="exp-6"></a>
-
-## Exp 6 — Aim: To use javascript to develop interactive webpages (Simple Unit Converter)
-
-Save as `unit-converter.html` and open in your browser.
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Simple Unit Converter</title>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        padding: 20px;
-      }
-      label,
-      select,
-      input {
-        margin: 10px 0;
-        display: block;
-      }
-      #result {
-        font-size: 20px;
-        margin-top: 20px;
-      }
-    </style>
-  </head>
-  <body>
-    <h2>Simple Length Unit Converter</h2>
-    <label for="inputValue">Value:</label>
-    <input id="inputValue" type="number" placeholder="Enter value" />
-    <label for="fromUnit">From:</label>
-    <select id="fromUnit">
-      <option value="meters">Meters</option>
-      <option value="kilometers">Kilometers</option>
-      <option value="miles">Miles</option>
-      <option value="feet">Feet</option>
-    </select>
-    <label for="toUnit">To:</label>
-    <select id="toUnit">
-      <option value="meters">Meters</option>
-      <option value="kilometers">Kilometers</option>
-      <option value="miles">Miles</option>
-      <option value="feet">Feet</option>
-    </select>
-    <button onclick="convert()">Convert</button>
-    <div id="result">Result: -</div>
-
-    <script>
-      const rates = {
-        meters: 1,
-        kilometers: 1000,
-        miles: 1609.34,
-        feet: 0.3048,
-      };
-      function convert() {
-        const input = parseFloat(document.getElementById("inputValue").value);
-        if (isNaN(input)) {
-          document.getElementById("result").innerText =
-            "Result: Please enter a valid number";
-          return;
-        }
-        const fromUnit = document.getElementById("fromUnit").value;
-        const toUnit = document.getElementById("toUnit").value;
-        const valueInMeters = input * rates[fromUnit];
-        const convertedValue = valueInMeters / rates[toUnit];
-        document.getElementById(
-          "result"
-        ).innerText = `Result: ${convertedValue.toFixed(4)} ${toUnit}`;
-      }
-    </script>
-  </body>
-</html>
-```
 
 ---
 
