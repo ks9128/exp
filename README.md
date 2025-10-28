@@ -9,6 +9,7 @@ This file lists the experiments with copy-paste-ready code and concise, practica
 - [Exp 6 — Aim: To construct a backend using node.js/express](#exp-6)
 - [Exp 7 — Aim: To design and simulate the environment for dynamic routing using Cisco Packet Tracer](#exp-7)
 - [Exp 8 — Aim: To design and simulate VLAN /WLAN on switch/router using Cisco Packet Tracer](#exp-8)
+- [Exp 9 — Aim: To design and simulate NAT on the router using Cisco Packet Tracer](#exp-9)
 
 ---
 
@@ -502,7 +503,19 @@ If you'd like, I can now create the individual files directly in this workspace 
 
 Files provided: `exp7_dynamic_routing.pkt` (Packet Tracer file).
 
-Quick use: download `exp7_dynamic_routing.pkt`, open it in Cisco Packet Tracer and run the simulation or use the router CLI to test connectivity.
+Steps to test connectivity:
+
+1. Open the provided file `exp7_dynamic_routing.pkt` in Cisco Packet Tracer
+2. To test connectivity between PCs:
+   - Look for the closed envelope icon (Simple PDU) in the ribbon at the top
+   - Click on any source PC
+   - Then click on another PC as the destination
+   - Note: Initial connection attempts might fail as the routing tables are being built
+   - Try the connection 2-3 times if it fails initially
+   - A successful ping will show a green line with success message
+   - A failed ping will show a red line with failure message
+3. You can test connectivity between different PCs to verify the dynamic routing setup
+4. If connections keep failing, wait for about 30 seconds to allow the routing tables to fully populate
 
 ---
 
@@ -512,4 +525,34 @@ Quick use: download `exp7_dynamic_routing.pkt`, open it in Cisco Packet Tracer a
 
 Files provided: `exp8_vlan_wlan.pkt` (Packet Tracer file).
 
-Quick use: download `exp8_vlan_wlan.pkt`, open it in Cisco Packet Tracer and run the simulation or verify VLAN/WLAN behavior with the client devices.
+Steps to test VLAN/WLAN connectivity:
+
+1. Open the provided file `exp8_vlan_wlan.pkt` in Cisco Packet Tracer
+2. To test connectivity between devices in different VLANs:
+   - Look for the closed envelope icon (Simple PDU) in the ribbon at the top
+   - Click on any source PC in one VLAN
+   - Click on another PC in a different VLAN as the destination
+   - Note: Initial pings might fail as the switches are learning MAC addresses
+   - If a connection fails, try the same test 2-3 more times
+   - Green line indicates successful communication
+   - Red line indicates blocked communication (proper VLAN isolation)
+3. Repeat the test with devices in the same VLAN to verify proper VLAN configuration
+4. If connections keep failing, wait for about 30 seconds to allow the switches to build their MAC address tables
+
+---
+
+## Exp 9 — Aim: To design and simulate NAT on the router using Cisco Packet Tracer
+
+<a id="exp-9"></a>
+
+Files provided: `EXP9.pkt` (Packet Tracer file).
+
+Steps to test NAT configuration:
+
+1. Open the provided file `EXP9.pkt` in Cisco Packet Tracer
+2. To test the NAT configuration:
+   - Click on any PC (e.g., PC0)
+   - Go to the Desktop tab
+   - Open the Web Browser
+   - In the address bar, type: 200.10.10.2 - The server page should open, indicating successful NAT configuration
+3. You can repeat this test from other PCs to verify NAT functionality
